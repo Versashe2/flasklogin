@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<form action="/update/{{contact.0}}" method="POST">
+
+    <input type="text" name="fullname" placeholder="Fullname" value="{{ contact.1 }}">
+    <input type="text" name="phone" placeholder="Phone" value="{{ contact.2 }}">
+    <input type="text" name="email" placeholder="Email" value="{{ contact.3 }}">
+    <button type="submit">
+        Save
+    </button>
+    
+</form> 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+     {{message}}
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}
